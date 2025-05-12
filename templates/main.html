@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Star Poster Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Star Poster Generator</h1>
+
+  <form id="posterForm">
+    <label for="location">Location:</label><br>
+    <input type="text" id="location" name="location" placeholder="e.g. Marblehead Neck, MA"><br><br>
+
+    <label for="date">Date:</label><br>
+    <input type="date" id="date" name="date"><br><br>
+
+    <label for="message">Custom Message:</label><br>
+    <input type="text" id="message" name="message" placeholder="e.g. When our stars aligned"><br><br>
+
+    <button type="submit">Generate Poster</button>
+  </form>
+
+  <div id="posterResult" style="margin-top: 30px; text-align: center;">
+    <h2>Your Star Poster:</h2>
+    <img id="starImage" style="max-width: 100%; border-radius: 10px;"/>
+    <p id="customMessage" style="font-style: italic; margin-top: 10px;"></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('posterForm');
+
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const location = document.getElementById('location').value;
+      const date = document.getElementById('date').value;
+      const message = document.getElementById('message').value;
+
+      try {
+        // get lat/lng from Flask backend
+        const geoRes = await fetch("http://127.0.0.1:5000/get_coordinates", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ location })
+        });
+
+        const geoData = await geoRes.json();
+        if (!geoRes.ok || !geoData.lat || !geoData.lng) {
+          alert("Could not find location.");
+          return;
+        }
+
+        const { lat, lng } = geoData;
+
+        // get star chart image from Flask backend
+        const starRes = await fetch("http://127.0.0.1:5000/get_chart", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            observer: { latitude: lat, longitude: lng, date },
+            view: { type: "constellation", parameters: { constellation: "ori" } }
+          })
+        });
+
+        const starData = await starRes.json();
+        if (!starRes.ok) {
+          alert("Star chart generation failed. Please try again later.");
+          return;
+        }
+
+        // Step 3: Display image and message
+        document.getElementById("starImage").src = starData.data.imageUrl;
+        document.getElementById("customMessage").textContent = message;
+
+      } catch (err) {
+        console.error("Error:", err);
+        alert("Something went wrong! Check the console.");
+      }
+    });
+  </script>
+</body>
+</html>
