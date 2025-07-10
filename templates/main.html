@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>Star Poster Generator</h1>
+  <h1>NIGHTSKY</h1>
 
   <form id="posterForm">
     <label for="location">Location:</label><br>
@@ -18,66 +18,98 @@
 
     <label for="message">Custom Message:</label><br>
     <input type="text" id="message" name="message" placeholder="e.g. When our stars aligned"><br><br>
+    
+</div>
 
     <button type="submit">Generate Poster</button>
   </form>
 
-  <div id="posterResult" style="margin-top: 30px; text-align: center;">
+  <div id="posterResult" style="margin-top: 30px; text-align: center; visibility: hidden;">
     <h2>Your Star Poster:</h2>
-    <img id="starImage" style="max-width: 100%; border-radius: 10px;"/>
-    <p id="customMessage" style="font-style: italic; margin-top: 10px;"></p>
+    <div class="poster-card">
+      <div class="star-circle">
+        <img id="starImage" alt="Star Chart" />
+      </div>
+      <div class="poster-text">
+        <span class="poster-date" id="posterDate"></span>
+        <p class="poster-message" id="posterMessage"></p>
+      </div>
+    </div>
+    <button id="downloadBtn" style="display:none; margin-top:1rem;">Download PNG</button>
   </div>
 
   <script>
     const form = document.getElementById('posterForm');
-
     form.addEventListener('submit', async function(event) {
       event.preventDefault();
-
       const location = document.getElementById('location').value;
       const date = document.getElementById('date').value;
       const message = document.getElementById('message').value;
-
       try {
         // get lat/lng from Flask backend
-        const geoRes = await fetch("http://127.0.0.1:5000/get_coordinates", {
+        const geoRes = await fetch("/get_coordinates", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ location })
         });
-
         const geoData = await geoRes.json();
+        console.log("geoData:", geoData);
         if (!geoRes.ok || !geoData.lat || !geoData.lng) {
           alert("Could not find location.");
           return;
         }
-
         const { lat, lng } = geoData;
-
-        // get star chart image from Flask backend
-        const starRes = await fetch("http://127.0.0.1:5000/get_chart", {
+        const [y2, m2, d2] = date.split('-').map(Number);
+        const isoDate = new Date(y2, m2 - 1, d2).toISOString();
+        const starRes = await fetch("/get_chart", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            observer: { latitude: lat, longitude: lng, date },
+            observer: { latitude: lat, longitude: lng, date: isoDate },
             view: { type: "constellation", parameters: { constellation: "ori" } }
           })
         });
-
         const starData = await starRes.json();
+        console.log("starData:", starData);
         if (!starRes.ok) {
           alert("Star chart generation failed. Please try again later.");
           return;
         }
-
-        // Step 3: Display image and message
         document.getElementById("starImage").src = starData.data.imageUrl;
-        document.getElementById("customMessage").textContent = message;
+        // Step 3: Display image, date, and message
+        const [y, m, d] = date.split('-').map(Number);
+        document.getElementById("posterDate").textContent = `${m}/${d}/${y}`;
+        document.getElementById("posterMessage").textContent = message;
+        document.getElementById("posterResult").style.visibility = 'visible';
+        document.getElementById("downloadBtn").style.display = 'inline-block';
+      } catch (err) { console.error(err); alert("Error generating poster"); }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-snBhpeMCQB4CIGvhWdYbW2BxpF0TzmWPhX+gWfWNHFiVjcbqZ6mKHcSmR4OLeIPoT8WLeK9M+29RNPwx1k0hKQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const downloadBtn = document.getElementById("downloadBtn");
+      downloadBtn.addEventListener("click", async () => {
+        // Capture the poster card exactly as it appears
+        const posterCard = document.querySelector(".poster-card");
+        const canvas = await html2canvas(posterCard, {
+          backgroundColor: null, // preserve transparency/background
+          scale: 2               // higher scale for better resolution
+        });
 
-      } catch (err) {
-        console.error("Error:", err);
-        alert("Something went wrong! Check the console.");
-      }
+        // Convert canvas to blob and trigger download
+        canvas.toBlob(blob => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "star-poster.png";
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+      });
     });
   </script>
 </body>

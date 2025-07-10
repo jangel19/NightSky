@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', sans-serif;
-    background-image: url('stars.jpg');  
+    background-image: url('./stars.jpg');  
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,3 +66,46 @@ body {
   button:hover {
     background: #a29bfe;
   }
+  /* in static/style.css */
+
+.poster-card {
+  background: rgba(0,0,0,0.6);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.star-circle {
+  width: 300px;       /* adjust size to taste */
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 5px solid white;
+}
+
+.star-circle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.poster-text {
+  margin-top: 1rem;
+  color: #fff;
+  font-family: 'Times New Roman', serif;
+}
+
+.poster-date {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.poster-message {
+  font-size: 1rem;
+  font-style: italic;
+}
