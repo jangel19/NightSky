@@ -1,36 +1,47 @@
-# NightSky
+# 🌌 NightSky
 
-**NightSky** is a web application that generates personalized star maps based on a user’s selected date and location. It recreates what the night sky looked like at a specific moment — ideal for commemorating life’s most meaningful events.
+**NightSky** is a web application that generates personalized star maps based on a selected date and location.  
+It recreates what the night sky looked like at a specific moment — perfect for commemorating life’s most meaningful events.
 
----
-
-## Inspiration
-
-NightSky began as an **anniversary gift** for my girlfriend. I wanted to capture the exact sky from a special night and turn it into something timeless. What started as a small idea became a full-stack project that blends astronomy, design, and sentiment.
+🔗 **Live Demo:** [Visit NightSky](https://nightsky-xutd.onrender.com/)  
+🎥 **Video Walkthrough:** [Watch on Loom](https://www.loom.com/share/2f59bafd54614a869edd8bd52c957cbd?sid=0a9cc181-7916-4dd6-a836-d9e094b9eaa4)  
 
 ---
 
-## Project Status: Version 1 Live 🎉
+## 📸 Demo Preview
 
-The **first public version** of NightSky is now live and deployed via **Render**:  
-🔗 [Visit NightSky](https://nightsky-xutd.onrender.com/)  
+[![Watch the NightSky demo](https://cdn.loom.com/sessions/thumbnails/2f59bafd54614a869edd8bd52c957cbd-with-play.gif)](https://www.loom.com/share/2f59bafd54614a869edd8bd52c957cbd?sid=0a9cc181-7916-4dd6-a836-d9e094b9eaa4)
 
-Core functionality is complete, and the site is fully usable for generating star maps.  
-
-I’ll continue updating and improving the project over time, with upcoming updates focused on:  
-- Increasing **rendering speed**  
-- Perfecting **template frame alignment**  
-- Enabling **high-resolution downloads**  
+> _Note: Rendering is slower in this Version 1 release due to backend processing. Performance optimizations are planned for upcoming updates._
 
 ---
 
-## Key Features
+## 💡 Inspiration
 
-- Input any **date** and **location** to recreate an accurate star map  
-- Customizable poster with editable messages  
-- Star charts use real astronomical data  
-- Built with a Python backend and image rendering pipeline  
-- Clean, mobile-responsive UI  
+NightSky began as an **anniversary gift** for my girlfriend. I wanted to capture the exact sky from a special night and turn it into something timeless.  
+What started as a small personal idea grew into a full-stack project that blends astronomy, design, and sentiment.
+
+---
+
+## 🚀 Project Status: Version 1 Live 🎉
+
+The **first public version** of NightSky is live and fully functional.  
+Users can generate and customize a star map poster from any date and location.
+
+Planned upcoming updates:
+- ⚡ Increase **rendering speed**
+- 🖼 Perfect **template frame alignment**
+- 📄 Enable **high-resolution downloads**
+
+---
+
+## ✨ Key Features
+
+- 🌍 Input any **date** and **location** to recreate an accurate star map
+- 📝 Add a **custom message** to personalize the poster
+- 📊 Star charts use **real astronomical data** via AstroPy
+- 📱 Fully **responsive UI** for mobile & desktop
+- 🖥 Built with a **Python backend** and image rendering pipeline
 
 ---
 
@@ -45,7 +56,16 @@ I’ll continue updating and improving the project over time, with upcoming upda
 
 ---
 
-## Current Progress
+## 📋 How to Use
+
+1. Visit the [Live Demo](https://nightsky-xutd.onrender.com/)  
+2. Enter a date, location, and custom message  
+3. Generate your personalized star map  
+4. Download or share your poster (coming in future updates)  
+
+---
+
+## 📈 Current Progress
 
 - [x] Input form for date/location/message  
 - [x] Star map generation with accurate celestial positions  
@@ -57,17 +77,21 @@ I’ll continue updating and improving the project over time, with upcoming upda
 
 ---
 
-## Roadmap
+## 🗺 Roadmap
 
-- Add optional **constellation lines** and **planet markers**  
-- Include **moon phase** and weather data (optional)  
-- Offer **downloadable & shareable** links  
-- Enable user accounts to **save and revisit** star maps  
+- 🔭 Add optional **constellation lines** and **planet markers**  
+- 🌙 Include **moon phase** and optional weather data  
+- 📤 Offer **downloadable & shareable** links  
+- 👤 Enable user accounts to **save and revisit** star maps  
 
 ---
 
-## Final Note
+## 📬 Feedback & Contributions
 
-What started as a personal project has grown into something I’m proud to share. Whether you’re a romantic, a stargazer, or a developer — I hope NightSky brings some wonder to your screen. ✨  
+I’m always open to feedback, ideas, and pull requests!  
+Whether you’re a romantic, a stargazer, or a developer — I hope NightSky brings some wonder to your screen. ✨
 
-**Open to feedback and contributions!**
+---
+
+**Author:** Jordi Lopez  
+📧 [Email Me](mailto:lopesjordi0@gmail.com) | 💼 [LinkedIn](https://www.linkedin.com/in/jordi-lopez-cs) | 🖥 [Portfolio](jordisworld.me)
