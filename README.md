@@ -10,23 +10,27 @@ NightSky began as an **anniversary gift** for my girlfriend. I wanted to capture
 
 ---
 
-## Project Status: Beta
+## Project Status: Version 1 Live 🎉
 
-The first stable version is complete and live for testing. The core functionality works, and the project is now in its **optimization and enhancement phase**. I'm currently:
+The **first public version** of NightSky is now live and deployed via **Render**:  
+🔗 [Visit NightSky](https://nightsky-xutd.onrender.com/)  
 
-- Finalizing **high-res poster export/download**
-- Improving **rendering speed** and **template frame alignment**
-- Preparing for public **demo deployment**
+Core functionality is complete, and the site is fully usable for generating star maps.  
+
+I’ll continue updating and improving the project over time, with upcoming updates focused on:  
+- Increasing **rendering speed**  
+- Perfecting **template frame alignment**  
+- Enabling **high-resolution downloads**  
 
 ---
 
 ## Key Features
 
-- Input any **date** and **location** to recreate an accurate star map
-- Customizable poster with editable messages
-- Star charts use real astronomical data
-- Built with a Python backend and image rendering pipeline
-- Clean, mobile-responsive UI
+- Input any **date** and **location** to recreate an accurate star map  
+- Customizable poster with editable messages  
+- Star charts use real astronomical data  
+- Built with a Python backend and image rendering pipeline  
+- Clean, mobile-responsive UI  
 
 ---
 
@@ -34,10 +38,10 @@ The first stable version is complete and live for testing. The core functionalit
 
 - `Python` – core backend logic  
 - `Flask` – lightweight API server  
-- `AstroPy` – astronomical computations   
+- `AstroPy` – astronomical computations  
 - `JavaScript` – client-side logic  
 - `HTML/CSS` – responsive UI  
-- `Vercel` – deployment (planned)
+- `Render` – deployment  
 
 ---
 
@@ -46,9 +50,10 @@ The first stable version is complete and live for testing. The core functionalit
 - [x] Input form for date/location/message  
 - [x] Star map generation with accurate celestial positions  
 - [x] Responsive poster preview  
-- [ ] Export as high-resolution image  
-- [ ] Frame template rendering and scaling  
-- [ ] Performance tuning
+- [x] Version 1 live deployment  
+- [ ] Performance tuning (render speed)  
+- [ ] Frame template alignment  
+- [ ] High-resolution download  
 
 ---
 
@@ -57,18 +62,12 @@ The first stable version is complete and live for testing. The core functionalit
 - Add optional **constellation lines** and **planet markers**  
 - Include **moon phase** and weather data (optional)  
 - Offer **downloadable & shareable** links  
-- Enable user accounts to **save and revisit** star maps
-
----
-
-## Demo Preview
-
-A live demo will be available soon. Users will be able to generate and download their own star maps directly from the site.
+- Enable user accounts to **save and revisit** star maps  
 
 ---
 
 ## Final Note
 
-What started as a personal project has grown into something I’m proud to share. Whether you’re a romantic, a stargazer, or a developer — I hope NightSky brings some wonder to your screen. ✨
+What started as a personal project has grown into something I’m proud to share. Whether you’re a romantic, a stargazer, or a developer — I hope NightSky brings some wonder to your screen. ✨  
 
 **Open to feedback and contributions!**
