@@ -3,6 +3,7 @@ import requests
 from dotenv import load_dotenv
 import os
 import base64
+from flask_cors import CORS
 
 # load .env credentials
 load_dotenv()
